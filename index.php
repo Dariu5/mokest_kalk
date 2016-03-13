@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Importo mokesčių kalkulaitorius</title>
+  <title>Importo mokesčių kalkuliatorius</title>
   <meta name="description" content="Importo mokesčių kalkulaitorius">
   <meta name="author" content="radiocool.lt">
 
@@ -15,9 +15,17 @@
 <body>
 
 <?php
+
+$komerc_pvm_nuo = 22;
+$ne_komerc_pvm_nuo =45;
+$PVM_taikomas = false;
+
 $p_verte = $_POST['p_verte'];
 $s_verte = $_POST['s_verte'];
+$komercine = $_POST['ar_komercine'];
+$sent = $_POST['sent'];
 $suma = $p_verte + $s_verte;
+
 ?>
 
  <script type="text/javascript" src="check.js"></script>
@@ -30,10 +38,92 @@ echo '
   Siuntimo kaina, eur:<br>
   <input type="text" name="s_verte" id ="ii" value ="'.$s_verte.'"><br>
   <br>
-  <input type="submit" class="button" value="Skaičiuoti"><br>
+  Ar siunta yra komercinio pobūdžio?:<br>';
   
+  if ($sent == 1)
+	  
+	  {
+		  if ($komercine == 'taip' )
+				{$komercine_taip = 'checked';
+					$komercine_ne = '';}
+		  
+		  else {	$komercine_taip = '';
+					$komercine_ne = 'checked';}
+		  
+		  echo '<input type="radio" name="ar_komercine" value="taip" '.$komercine_taip.'>Taip<br>
+				<input type="radio" name="ar_komercine" value="ne" '.$komercine_ne.'>Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintanai)<br>';
+		    	  
+		  	  }
+  
+  else echo '<input type="radio" name="ar_komercine" value="taip" checked>Taip<br>
+				<input type="radio" name="ar_komercine" value="ne" >Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintanai)<br>';
+  
+  echo' 
+  
+  <br>
+  <input type="submit" class="button" value="Skaičiuoti"><br>
+  <br>
    Viso, eur:<br>
   <input type="text" name="v_verte" value="'.$suma.'"><br>
-</form>
+  <input type="hidden" name="sent" value="1"><br>
+</form>';
+
+ if ($sent == 1) {
+	 
+	 
+	 if ($komercine == 'taip') 
+		 
+		 {if ($p_verte>$komerc_pvm_nuo)
+			  $PVM_taikomas = true;     
+					else $PVM_taikomas = false; 
+		 }				
+		else {if ($p_verte>$ne_komerc_pvm_nuo)
+		 
+				{  $PVM_taikomas = true;     }
+		 
+		else $PVM_taikomas = false; }
+							 
+
+if ($PVM_taikomas == true)
+
+{
+$PVM_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+
+if ($komercine == 'taip')
+	
+	{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$komerc_pvm_nuo. ' eur) </b> iki kurios netaikomas mokestis <b>komercinėms siuntoms.</b> ';}
+	
+	else
+		{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$ne_komerc_pvm_nuo. ' eur)</b>  iki kurios netaikomas mokestis <b>ne komercinėms siuntoms.</b> ';}
+
+
+
+}
+else 
+	
+{	
+$PVM_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+$PVM_komentaras_string ='';
+}
+	
+echo '
+<table width="500">
+  <tr>
+    <th>Mokestis</th>
+    <th>Ar taikomas</th>
+    <th>Komentaras</th>
+  </tr>
+  <tr>
+    <td>PVM</td>
+    '.$PVM_taikomas_string.'
+    <td>'.$PVM_komentaras_string.'</td>
+  </tr>
+  <tr>
+    <td>Muito</td>
+    <td>8</td>
+    <td>9</td>
+  </tr>
+</table>
 ';
+ }
  ?>
