@@ -18,7 +18,14 @@
 
 $komerc_pvm_nuo = 22;
 $ne_komerc_pvm_nuo =45;
+
+$muito_mokest_nuo =150;
+$past_ne_komer_muito_mokestis_iki =700;
+
+
+
 $PVM_taikomas = false;
+$muitas_taikomas = 0;
 
 $p_verte = $_POST['p_verte'];
 $s_verte = $_POST['s_verte'];
@@ -70,7 +77,7 @@ echo '
 
  if ($sent == 1) {
 	 
-	 
+	 // ar taikomas PVM?
 	 if ($komercine == 'taip') 
 		 
 		 {if ($p_verte>$komerc_pvm_nuo)
@@ -84,6 +91,20 @@ echo '
 		else $PVM_taikomas = false; }
 							 
 
+		// ar taikomas muitas? 0 - ne, 1- pastovus, 2 - pagal tarifą					 
+	if ($p_verte > $muito_mokest_nuo)
+
+	{ 
+		if (($komercine == 'ne')&&($p_verte<$past_ne_komer_muito_mokestis_iki))
+			$muitas_taikomas =1;
+			else $muitas_taikomas =2;
+		
+		
+	}
+		
+		else  $muitas_taikomas =0;		
+							 
+	// formuojamas PVM komentaras lentelėje						 
 if ($PVM_taikomas == true)
 
 {
@@ -105,6 +126,29 @@ else
 $PVM_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
 $PVM_komentaras_string ='';
 }
+
+// formuojamas muito komentaras lentelėje		
+
+if ($muitas_taikomas > 0)
+	
+	{
+		
+		$muitas_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+		$muitas_taikomas_komentaras_string ='Muito mokestis yra taikomas, kadangi prekių vertė <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$muito_mokest_nuo. ' eur) </b> iki kurios netaikomas muito mokestis. ';
+		
+	}
+
+
+
+	else 
+	
+	{
+		
+		$muitas_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+		$muitas_taikomas_komentaras_string ='';
+		
+	}
+
 	
 echo '
 <table width="500">
@@ -120,8 +164,8 @@ echo '
   </tr>
   <tr>
     <td>Muito</td>
-    <td>8</td>
-    <td>9</td>
+    '.$muitas_taikomas_string.'
+    <td>'.$muitas_taikomas_komentaras_string.'</td>
   </tr>
 </table>
 ';
