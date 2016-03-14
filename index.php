@@ -1,5 +1,4 @@
 ﻿<!doctype html>
-
 <html lang="lt">
 <head>
   <meta charset="utf-8">
@@ -10,8 +9,6 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
-
 <body>
 
 <?php
@@ -22,8 +19,6 @@ $ne_komerc_pvm_nuo =45;
 $muito_mokest_nuo =150;
 $past_ne_komer_muito_mokestis_iki =700;
 
-
-
 $PVM_taikomas = false;
 $muitas_taikomas = 0;
 
@@ -32,7 +27,6 @@ $s_verte = $_POST['s_verte'];
 $komercine = $_POST['ar_komercine'];
 $sent = $_POST['sent'];
 $suma = $p_verte + $s_verte;
-
 ?>
 
  <script type="text/javascript" src="check.js"></script>
@@ -98,9 +92,7 @@ echo '
 		if (($komercine == 'ne')&&($p_verte<$past_ne_komer_muito_mokestis_iki))
 			$muitas_taikomas =1;
 			else $muitas_taikomas =2;
-		
-		
-	}
+			}
 		
 		else  $muitas_taikomas =0;		
 							 
@@ -116,8 +108,6 @@ if ($komercine == 'taip')
 	
 	else
 		{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$ne_komerc_pvm_nuo. ' eur)</b>  iki kurios netaikomas mokestis <b>ne komercinėms siuntoms.</b> ';}
-
-
 
 }
 else 
@@ -137,8 +127,6 @@ if ($muitas_taikomas > 0)
 		$muitas_taikomas_komentaras_string ='Muito mokestis yra taikomas, kadangi prekių vertė <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$muito_mokest_nuo. ' eur) </b> iki kurios netaikomas muito mokestis. ';
 		
 	}
-
-
 
 	else 
 	
