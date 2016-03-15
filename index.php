@@ -52,21 +52,19 @@ echo '
 					$komercine_ne = 'checked';}
 		  
 		  echo '<input type="radio" name="ar_komercine" value="taip" '.$komercine_taip.'>Taip<br>
-				<input type="radio" name="ar_komercine" value="ne" '.$komercine_ne.'>Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintanai)<br>';
+				<input type="radio" name="ar_komercine" value="ne" '.$komercine_ne.'>Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)<br>';
 		    	  
 		  	  }
   
   else echo '<input type="radio" name="ar_komercine" value="taip" checked>Taip<br>
-				<input type="radio" name="ar_komercine" value="ne" >Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintanai)<br>';
+				<input type="radio" name="ar_komercine" value="ne" >Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)<br>';
   
   echo' 
   
   <br>
-  <input type="submit" class="button" value="Skaičiuoti"><br>
+  <input type="submit" class="button" value="Tikrinti"><br>
   <br>
-   Viso, eur:<br>
-  <input type="text" name="v_verte" value="'.$suma.'"><br>
-  <input type="hidden" name="sent" value="1"><br>
+   <input type="hidden" name="sent" value="1"><br>
 </form>';
 
  if ($sent == 1) {
@@ -101,6 +99,10 @@ if ($PVM_taikomas == true)
 
 {
 $PVM_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+$tarpininkas_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+$tarpininkas_taikomas_komentaras_string = 'Kadangi siuntai priskaičiuoti importo mokesčiai Lietuvos paštas ima atlygį už muitinės tarpininko paslaugą.';
+
+
 
 if ($komercine == 'taip')
 	
@@ -115,6 +117,11 @@ else
 {	
 $PVM_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
 $PVM_komentaras_string ='';
+
+$tarpininkas_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+$tarpininkas_taikomas_komentaras_string ='';
+
+
 }
 
 // formuojamas muito komentaras lentelėje		
@@ -154,6 +161,11 @@ echo '
     <td>Muito</td>
     '.$muitas_taikomas_string.'
     <td>'.$muitas_taikomas_komentaras_string.'</td>
+  </tr>
+  <tr>
+    <td>Muitinės tarpininko</td>
+    '.$tarpininkas_taikomas_string.'
+    <td>'.$tarpininkas_taikomas_komentaras_string.'</td>
   </tr>
 </table>
 ';

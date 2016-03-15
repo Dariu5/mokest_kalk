@@ -1,9 +1,12 @@
 .button {
-    width:90px;
-    height: 25px;
+    width:150px;
+    height: 50px;
     border-radius: 5px; 
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px; 
 	border: 2px solid #800000;
 	text-align: center;
+	##text-shadow: black 0.1em 0.1em 0.2em;
+	##color: white;
+	font-size: 25px;
 }
