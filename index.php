@@ -12,6 +12,7 @@
 <body>
 
 <?php
+locale_set_default('de-DE');
 session_start();
 $komerc_pvm_nuo = 22;
 $ne_komerc_pvm_nuo =45;
@@ -29,18 +30,17 @@ $muitas_taikomas = 0;
 
 if (!empty($_POST['p_verte']))
 	
-	$_SESSION["p_verte"] = $_POST['p_verte'];
+	$_SESSION["p_verte"] = (float)str_replace(",",".",$_POST['p_verte']);
 			
 	
 	
 if (!empty($_POST['s_verte']))
-	$_SESSION["s_verte"]= $_POST['s_verte'];
-
+	$_SESSION["s_verte"]= (float)str_replace(",",".",$_POST['s_verte']);
 
 if (!empty($_POST['ar_komercine']))
 	$_SESSION["ar_komercine"]= $_POST['ar_komercine'];
 
-$p_muito_tarifas = $_POST['p_muito_tarifas'];
+$p_muito_tarifas =(float)str_replace(",",".",$_POST['p_muito_tarifas']);
 
 $p_verte =$_SESSION["p_verte"];
 $s_verte =$_SESSION["s_verte"];
@@ -52,17 +52,26 @@ $sent = $_POST['sent'];
 $muito_mokestis =0;
 $PVM_mokestis=0;
 $viso_mokesciu=0;
+
+
+function formatted($value) {
+		
+	$number = number_format($value,2,',',' ');
+
+    return $number;
+} 
+
 ?>
 
  <script type="text/javascript" src="check.js"></script>
 
- <form name="kalkuliatorius" action="index.php" method="post" onsubmit="return validateForm()">
+ <form name="kalkuliatorius" action="index.php" method="post" onsubmit="return validateForm(1)">
   Prekių vertė, eur:<br>
 <?php
 echo '
-  <input type="text" name="p_verte" id ="i" value ="'.$p_verte.'"><br>
+  <input type="text" name="p_verte" id ="i" value ="'.formatted($p_verte).'"><br>
   Siuntimo kaina, eur:<br>
-  <input type="text" name="s_verte" id ="ii" value ="'.$s_verte.'"><br>
+  <input type="text" name="s_verte" id ="ii" value ="'.formatted($s_verte).'"><br>
   <br>
   Ar siunta yra komercinio pobūdžio?:<br>';
   
@@ -127,10 +136,10 @@ $PVM_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
 
 if ($komercine == 'taip')
 	
-	{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$komerc_pvm_nuo. ' eur) </b> iki kurios netaikomas mokestis <b>komercinėms siuntoms.</b> ';}
+	{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .formatted($p_verte). ' eur) yra didesnė negu riba ( ' .$komerc_pvm_nuo. ' eur) </b> iki kurios netaikomas mokestis <b>komercinėms siuntoms.</b> ';}
 	
 	else
-		{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$ne_komerc_pvm_nuo. ' eur)</b>  iki kurios netaikomas mokestis <b>ne komercinėms siuntoms.</b> ';}
+		{$PVM_komentaras_string ='PVM mokestis taikomas, nes <b>prekių vertė ( ' .formatted($p_verte). ' eur) yra didesnė negu riba ( ' .$ne_komerc_pvm_nuo. ' eur)</b>  iki kurios netaikomas mokestis <b>ne komercinėms siuntoms.</b> ';}
 
 }
 else 
@@ -147,7 +156,7 @@ if ($muitas_taikomas > 0)
 	{
 		
 		$muitas_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
-		$muitas_taikomas_komentaras_string ='Muito mokestis yra taikomas, kadangi prekių vertė <b>prekių vertė ( ' .$p_verte. ' eur) yra didesnė negu riba ( ' .$muito_mokest_nuo. ' eur) </b> iki kurios netaikomas muito mokestis. ';
+		$muitas_taikomas_komentaras_string ='Muito mokestis yra taikomas, kadangi prekių vertė <b>prekių vertė ( ' .formatted($p_verte). ' eur) yra didesnė negu riba ( ' .$muito_mokest_nuo. ' eur) </b> iki kurios netaikomas muito mokestis. ';
 		
 	}
 
@@ -205,9 +214,10 @@ if ($muitas_taikomas == 2)
 	{
 		echo'
 		<br>
+		Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
 		<b> Nurodykite muito tarifą, %</b>
-		<form name="kalkuliatorius" action="index.php" method="post" onsubmit="return validateForm()">
-		<input type="text" name="p_muito_tarifas" id ="iii" ><br>
+		<form name="muito_tarifas" action="index.php" method="post" onsubmit="return validateForm(2)">
+		<input type="text" name="p_muito_tarifas" id ="iii" value = "'.formatted($p_muito_tarifas).'"><br>
 		<br>
 		<input type="submit" class="button" value="Skaičiuoti"><br>
 		<br>
@@ -244,8 +254,8 @@ if ($muitas_taikomas == 2)
 		if ($PVM_taikomas== true)
 			
 			{
-				
-				$PVM_mokestis = ($p_verte + $s_verte + $muito_mokestis + $tarpininko_mokestis) *$PVM_tarifas/100; 
+				$PVM_apmokestinama_suma =$p_verte + $s_verte + $muito_mokestis + $tarpininko_mokestis;
+				$PVM_mokestis = ($PVM_apmokestinama_suma ) *$PVM_tarifas/100; 
 				
 			}
 		
@@ -257,8 +267,10 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	 echo '<table width="500">
   <tr>
     <th>Mokestis</th>
-    <th>Suma</th>
     <th>Komentaras</th>
+    <th>Apmokestinama suma</th>
+	<th>Tarifas</th>
+	<th>Suma</th>
   </tr>';
   
   if ($muitas_taikomas >0)
@@ -266,8 +278,21 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	  { echo '
 		 <tr>
     <td>Muito</td>
-    <td>'.$muito_mokestis.'</td>
-    <td></td>
+	 <td>Skaičiuojamas nuo prekių vertės</td>
+	 <td>'.formatted($p_verte).'</td>';
+	 if ($muitas_taikomas == 1)
+	 
+	 {
+	 echo '<td>'.formatted($pastovus_muito_tarifas).' %</td>';
+	 
+	 }
+	 
+	 else 
+	 
+	 { echo '<td>'.formatted($p_muito_tarifas).' %</td>';}
+	 
+   echo ' <td>'.formatted($muito_mokestis).'</td>;
+   
 	</tr>
 	 '
 		  	  ;}  
@@ -276,8 +301,11 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	  { echo '
 		 <tr>
     <td>PVM</td>
-    <td>'.$PVM_mokestis.'</td>
-    <td></td>
+	<td>Skaičiuojamas nuo visų patirtų išlaidų(prekių ir siuntimo kainos; muito ir muitinės tarpiniko mokesčių)</td>
+    <td>'.formatted($PVM_apmokestinama_suma).'</td>
+	<td>'.formatted($PVM_tarifas).' %</td>
+	<td>'.formatted($PVM_mokestis).'</td>
+    
 	</tr>
 	 '
 		  	  ;} 
@@ -287,7 +315,10 @@ if ($tarpininkas_taikomas)
 	  { echo '
 		 <tr>
     <td>Muitinės tarpininko</td>
-    <td>'.$tarpininko_mokestis.'</td>
+	<td>Fiksuotas mokestis</td>
+	<td>-</td>
+    <td>'.formatted($tarpininko_mokestis).'</td>
+	<td>'.formatted($tarpininko_mokestis).'</td>
     <td></td>
 	</tr>
 	 '
@@ -297,8 +328,10 @@ if ($tarpininkas_taikomas)
    
    <tr>
     <td>Viso:</td>
-    <td>'.$viso_mokesciu.'</td>
-    <td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+    <td>'.formatted($viso_mokesciu).'</td>    
 	</tr>
    
 </table>';
