@@ -1,12 +1,68 @@
+body {
+heigh: 500px;
+background: linear-gradient(#A7D166, #7996B3);
+color: black;
+text-shadow: 1px 1px 5px #FFFFFF;
+}
+
 .button {
     width:150px;
     height: 50px;
     border-radius: 5px; 
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px; 
-	border: 2px solid #800000;
+	border: 2px solid #092A4A;
 	text-align: center;
 	##text-shadow: black 0.1em 0.1em 0.2em;
 	##color: white;
 	font-size: 25px;
+}
+
+.input{
+    width:150px;
+    height: 50px;
+    border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border: 2px solid #092A4A;
+	text-align: center;
+	##text-shadow: black 0.1em 0.1em 0.2em;
+	##color: white;
+	font-size: 25px;
+}
+
+#input_area {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+	background: #FFECA7;
+    padding: 20px;
+    width: 250px;
+    height: 350px;
+}
+
+#input_area_m {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+	background: #FFECA7;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+}
+
+#input_area_l1 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+	background: #FFECA7;
+    padding: 20px;
+    /*width: 250px;
+    height: 250px; */
+}
+
+#input_area_l2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+	background: #FFECA7;
+    padding: 20px;
+     /*width: 250px;
+    height: 250px; */
 }

@@ -65,13 +65,14 @@ function formatted($value) {
 
  <script type="text/javascript" src="check.js"></script>
 
- <form name="kalkuliatorius" action="index.php" method="post" onsubmit="return validateForm(1)">
+ <form name="kalkuliatorius" action="index.php" method="post" id="input_area" onsubmit="return validateForm(1)">
+ 
   Prekių vertė, eur:<br>
 <?php
 echo '
-  <input type="text" name="p_verte" id ="i" value ="'.formatted($p_verte).'"><br>
+  <input type="text" name="p_verte" id ="i" class="input" value ="'.formatted($p_verte).'"><br>
   Siuntimo kaina, eur:<br>
-  <input type="text" name="s_verte" id ="ii" value ="'.formatted($s_verte).'"><br>
+  <input type="text" name="s_verte" id ="ii" class="input" value ="'.formatted($s_verte).'"><br>
   <br>
   Ar siunta yra komercinio pobūdžio?:<br>';
   
@@ -186,7 +187,7 @@ if ($tarpininkas_taikomas)
 $tarpininkas_taikomas_komentaras_string ='';}
 	
 echo '
-<table width="500">
+<table width="500" id = "input_area_l1">
   <tr>
     <th>Mokestis</th>
     <th>Ar taikomas</th>
@@ -212,12 +213,11 @@ echo '
 if ($muitas_taikomas == 2)
 	
 	{
-		echo'
-		<br>
+		echo'		
+		<form name="muito_tarifas" action="index.php" method="post" id="input_area_m" onsubmit="return validateForm(2)">
 		Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
 		<b> Nurodykite muito tarifą, %</b>
-		<form name="muito_tarifas" action="index.php" method="post" onsubmit="return validateForm(2)">
-		<input type="text" name="p_muito_tarifas" id ="iii" value = "'.formatted($p_muito_tarifas).'"><br>
+		<input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"><br>
 		<br>
 		<input type="submit" class="button" value="Skaičiuoti"><br>
 		<br>
@@ -264,7 +264,7 @@ if ($muitas_taikomas == 2)
 
 $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 
-	 echo '<table width="500">
+	 echo '<table width="500" id = "input_area_l2">
   <tr>
     <th>Mokestis</th>
     <th>Komentaras</th>
@@ -291,7 +291,7 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	 
 	 { echo '<td>'.formatted($p_muito_tarifas).' %</td>';}
 	 
-   echo ' <td>'.formatted($muito_mokestis).'</td>;
+   echo ' <td>'.formatted($muito_mokestis).'</td>
    
 	</tr>
 	 '
