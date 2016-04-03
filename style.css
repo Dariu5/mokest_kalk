@@ -5,6 +5,17 @@ color: black;
 text-shadow: 1px 1px 5px #FFFFFF;
 }
 
+.header 
+
+{
+
+
+background: #FAEEF5;
+heigh: 200px;
+widht:1200px;
+
+}
+
 .button {
     width:150px;
     height: 50px;
@@ -16,6 +27,8 @@ text-shadow: 1px 1px 5px #FFFFFF;
 	##text-shadow: black 0.1em 0.1em 0.2em;
 	##color: white;
 	font-size: 25px;
+	display:block;
+    margin: 0 auto;
 }
 
 .input{
@@ -26,43 +39,92 @@ text-shadow: 1px 1px 5px #FFFFFF;
 	-webkit-border-radius: 5px; 
 	border: 2px solid #092A4A;
 	text-align: center;
-	##text-shadow: black 0.1em 0.1em 0.2em;
-	##color: white;
+	/*text-shadow: black 0.1em 0.1em 0.2em;
+	##color: white;*/
 	font-size: 25px;
 }
 
+
+#pradine_info {
+
+	border: 2px solid #73AD21;
+	background: #FFFFFF;
+    padding: 20px;
+    width: 250px;
+    height: 350px;
+	float: left;
+	display:flex;
+	
+}
+
+.submit {
+
+	/*padding-top: 15px;*/
+	/*background: #DAEEF5;*/
+	;}
+/*
+
 #input_area {
-    border-radius: 25px;
+  /*  border-radius: 25px; 
     border: 2px solid #73AD21;
 	background: #FFECA7;
     padding: 20px;
     width: 250px;
     height: 350px;
+	float: left;
 }
 
+*/
+/*
 #input_area_m {
-    border-radius: 25px;
+  /*  border-radius: 25px; 
+  
     border: 2px solid #73AD21;
 	background: #FFECA7;
     padding: 20px;
     width: 250px;
     height: 250px;
+	
 }
 
+*/
 #input_area_l1 {
-    border-radius: 25px;
+  /*  border-radius: 25px; */
     border: 2px solid #73AD21;
 	background: #FFECA7;
     padding: 20px;
     /*width: 250px;
     height: 250px; */
+	float: left;
 }
 
 #input_area_l2 {
-    border-radius: 25px;
+   /* border-radius: 2px; */
     border: 2px solid #73AD21;
 	background: #FFECA7;
     padding: 20px;
      /*width: 250px;
     height: 250px; */
+	float: left;
+}
+
+#muito_ivestis {
+  /*  border-radius: 25px; */
+  
+    border: 2px solid #73AD21;
+	background: #FFECA7;
+    padding: 20px;
+  /*  width: 250px;
+    height: 250px;*/
+	float: left:
+	
+}
+
+form span {
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	color: black;
+	font-weight: 690;
+	padding-bottom: 5px;	
 }

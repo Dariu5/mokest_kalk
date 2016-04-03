@@ -65,43 +65,66 @@ function formatted($value) {
 
  <script type="text/javascript" src="check.js"></script>
 
- <form name="kalkuliatorius" action="index.php" method="post" id="input_area" onsubmit="return validateForm(1)">
+<div class ="header">
+
+<h1>Importo mokesčių skaičiuoklė</h1>
+<h2>Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų šalių</h2>
+</div>
+
+<div class = "main"> 
  
-  Prekių vertė, eur:<br>
-<?php
-echo '
-  <input type="text" name="p_verte" id ="i" class="input" value ="'.formatted($p_verte).'"><br>
-  Siuntimo kaina, eur:<br>
-  <input type="text" name="s_verte" id ="ii" class="input" value ="'.formatted($s_verte).'"><br>
-  <br>
-  Ar siunta yra komercinio pobūdžio?:<br>';
+	<div id="pradine_info">
+
+		<div class="forma">
+	
+			<form name="kalkuliatorius" action="index.php" method="post" id="input_area" onsubmit="return validateForm(1)">
+							
+			<?php
+			echo '
+				<div>
+					<span><label>Prekių vertė, eur:</label></span>
+					<span><input type="text" name="p_verte" id ="i" class="input" value ="'.formatted($p_verte).'"></span>
+				</div>
+				<div>
+					<span><label>Siuntimo kaina, eur:</span>
+					<span><input type="text" name="s_verte" id ="ii" class="input" value ="'.formatted($s_verte).'"></span>
+				</div>
+				<div>	
+					<span><label>Ar siunta yra komercinio pobūdžio?:</label></span>';
   
-  if ($sent > 0)
+			
+				if ($sent > 0)
 	  
-	  {
-		  if ($komercine == 'taip' )
-				{$komercine_taip = 'checked';
+			{
+					if ($komercine == 'taip' )
+						{$komercine_taip = 'checked';
 					$komercine_ne = '';}
 		  
-		  else {	$komercine_taip = '';
+				else {	$komercine_taip = '';
 					$komercine_ne = 'checked';}
 		  
-		  echo '<input type="radio" name="ar_komercine" value="taip" '.$komercine_taip.'>Taip<br>
-				<input type="radio" name="ar_komercine" value="ne" '.$komercine_ne.'>Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)<br>';
-		    	  
-		  	  }
+				echo '<span><input type="radio" name="ar_komercine" value="taip" '.$komercine_taip.'>Taip</span>
+				<span><input type="radio" name="ar_komercine" value="ne" '.$komercine_ne.'>Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)</span>';
+						
+					}
   
-  else echo '<input type="radio" name="ar_komercine" value="taip" checked>Taip<br>
-				<input type="radio" name="ar_komercine" value="ne" >Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)<br>';
+				else echo '<span><input type="radio" name="ar_komercine" value="taip" checked>Taip</span>
+						<span><input type="radio" name="ar_komercine" value="ne" >Ne (Gavėjas ir siuntėjas yra fizinis asmuo, prekės gaunamos neatlygintinai)</span>';
   
-  echo' 
+				?>
   
-  <br>
-  <input type="submit" class="button" value="Tikrinti"><br>
-  <br>
-   <input type="hidden" name="sent" value="1"><br>
-</form>';
+				</div>
+				<div class = "submit">
+				<input type="submit" class="button" value="Tikrinti"><br>
+				<input type="hidden" name="sent" value="1">
+				</div>
+				
+		</form>
+		</div>
 
+</div>
+
+<?php
  if ($sent > 0) {
 	 
 	 // ar taikomas PVM?
@@ -212,8 +235,9 @@ echo '
 
 if ($muitas_taikomas == 2)
 	
-	{
-		echo'		
+	{	
+		echo'	
+		<div class= "muito_ivestis">
 		<form name="muito_tarifas" action="index.php" method="post" id="input_area_m" onsubmit="return validateForm(2)">
 		Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
 		<b> Nurodykite muito tarifą, %</b>
@@ -223,6 +247,7 @@ if ($muitas_taikomas == 2)
 		<br>
 		<input type="hidden" name="sent" value="2"><br>
 		</form>
+		</div>
 		';
 	}
  
@@ -340,4 +365,5 @@ if ($tarpininkas_taikomas)
 	 } 
  }}
  ?>
+ </div>  
  </body>
