@@ -237,16 +237,18 @@ if ($muitas_taikomas == 2)
 	
 	{	
 		echo'	
-		<div class= "muito_ivestis">
-		<form name="muito_tarifas" action="index.php" method="post" id="input_area_m" onsubmit="return validateForm(2)">
-		Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
-		<b> Nurodykite muito tarifą, %</b>
-		<input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"><br>
-		<br>
-		<input type="submit" class="button" value="Skaičiuoti"><br>
-		<br>
-		<input type="hidden" name="sent" value="2"><br>
+		<div id= "muito_ivestis">
+			<div class= "forma">
+			<form name="muito_tarifas" action="index.php" method="post" id="input_area_m" onsubmit="return validateForm(2)">
+			Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
+			<span><label>Nurodykite muito tarifą, %</label></span>
+			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"></span>
+			<div class = "submit">
+			<input type="submit" class="button" value="Skaičiuoti">
+			<input type="hidden" name="sent" value="2">
+			</div>
 		</form>
+		</div>
 		</div>
 		';
 	}

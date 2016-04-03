@@ -109,15 +109,14 @@ widht:1200px;
 }
 
 #muito_ivestis {
-  /*  border-radius: 25px; */
-  
-    border: 2px solid #73AD21;
-	background: #FFECA7;
+ 
+	border: 2px solid #73AD21;
+	background: #FFFFFF;
     padding: 20px;
-  /*  width: 250px;
-    height: 250px;*/
-	float: left:
-	
+    width: 250px;
+    height: 230px;
+	float: left;
+	display:flex;
 }
 
 form span {
