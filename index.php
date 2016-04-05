@@ -74,7 +74,9 @@ function formatted($value) {
 <div class = "main"> 
  
 	<div id="pradine_info">
-
+		<div class = "area_header">
+		<h3>Įveskite pradinius duomenis</h3>
+		</div>
 		<div class="forma">
 	
 			<form name="kalkuliatorius" action="index.php" method="post" id="input_area" onsubmit="return validateForm(1)">
@@ -156,7 +158,7 @@ function formatted($value) {
 if ($PVM_taikomas == true)
 
 {
-$PVM_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+$PVM_taikomas_string = '<td class= "tg-yw4ly">Taip</td>';
 
 if ($komercine == 'taip')
 	
@@ -169,7 +171,7 @@ if ($komercine == 'taip')
 else 
 	
 {	
-$PVM_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+$PVM_taikomas_string ='<td class="tg-yw4ln">Ne</td>';
 $PVM_komentaras_string ='';
 }
 
@@ -179,7 +181,7 @@ if ($muitas_taikomas > 0)
 	
 	{
 		
-		$muitas_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+		$muitas_taikomas_string = '<td class="tg-yw4ly">Taip</td>';
 		$muitas_taikomas_komentaras_string ='Muito mokestis yra taikomas, kadangi prekių vertė <b>prekių vertė ( ' .formatted($p_verte). ' eur) yra didesnė negu riba ( ' .$muito_mokest_nuo. ' eur) </b> iki kurios netaikomas muito mokestis. ';
 		
 	}
@@ -188,7 +190,7 @@ if ($muitas_taikomas > 0)
 	
 	{
 		
-		$muitas_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+		$muitas_taikomas_string ='<td class="tg-yw4ln" >Ne</td>';
 		$muitas_taikomas_komentaras_string ='';
 		
 	}
@@ -201,46 +203,56 @@ else $tarpininkas_taikomas = false;
 
 if ($tarpininkas_taikomas)
 	
-	{$tarpininkas_taikomas_string = '<td bgcolor="#FF0000">Taip</td>';
+	{$tarpininkas_taikomas_string = '<td class="tg-yw4ly" >Taip</td>';
 	$tarpininkas_taikomas_komentaras_string = 'Kadangi siuntai priskaičiuoti importo mokesčiai Lietuvos paštas ima atlygį už muitinės tarpininko paslaugą.';}
 	
 	else
 		
-{$tarpininkas_taikomas_string ='<td bgcolor="#00FF00">Ne</td>';
+{$tarpininkas_taikomas_string ='<td class="tg-yw4ln" >Ne</td>';
 $tarpininkas_taikomas_komentaras_string ='';}
 	
 echo '
-<table width="500" id = "input_area_l1">
+<div id = "taikomi_mokesciai">
+<div class = "area_header">
+		<h3>Kokie mokesčiai taikomi Jūsų siuntai</h3>
+		</div>
+<div class = "table" >
+<table width="500" class="tg">
   <tr>
-    <th>Mokestis</th>
-    <th>Ar taikomas</th>
-    <th>Komentaras</th>
+    <th class="tg-yw4l">Mokestis</th>
+    <th class="tg-yw4l">Ar taikomas</th>
+    <th class="tg-yw4l">Komentaras</th>
   </tr>
   <tr>
-    <td>PVM</td>
+    <td class="tg-yw4l">PVM</td>
     '.$PVM_taikomas_string.'
-    <td>'.$PVM_komentaras_string.'</td>
+    <td class="tg-yw4l">'.$PVM_komentaras_string.'</td>
   </tr>
   <tr>
-    <td>Muito</td>
+    <td class="tg-yw4l">Muito</td>
     '.$muitas_taikomas_string.'
-    <td>'.$muitas_taikomas_komentaras_string.'</td>
+    <td class="tg-yw4l">'.$muitas_taikomas_komentaras_string.'</td>
   </tr>
   <tr>
-    <td>Muitinės tarpininko</td>
+    <td class="tg-yw4l">Muitinės tarpininko</td>
     '.$tarpininkas_taikomas_string.'
-    <td>'.$tarpininkas_taikomas_komentaras_string.'</td>
+    <td class="tg-yw4l">'.$tarpininkas_taikomas_komentaras_string.'</td>
   </tr>
-</table><br>';
+</table>
+</div></div>
+';
 
 if ($muitas_taikomas == 2)
 	
 	{	
 		echo'	
 		<div id= "muito_ivestis">
+		<div class = "area_header">
+		<h3>Įveskite muito dydį</h3>
+		</div>
 			<div class= "forma">
-			<form name="muito_tarifas" action="index.php" method="post" id="input_area_m" onsubmit="return validateForm(2)">
-			Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.
+			<form name="muito_tarifas" action="index.php" method="post" onsubmit="return validateForm(2)">
+			<span>Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.</span>
 			<span><label>Nurodykite muito tarifą, %</label></span>
 			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"></span>
 			<div class = "submit">
@@ -291,34 +303,40 @@ if ($muitas_taikomas == 2)
 
 $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 
-	 echo '<table width="500" id = "input_area_l2">
+	 echo '
+	 <div id = "paskaiciuoti_mokesciai">
+	 <div class = "area_header">
+		<h3>Kiek reikės mokėti</h3>
+		</div>
+	<div class = "table">
+	 <table width="500" class="tg">
   <tr>
-    <th>Mokestis</th>
-    <th>Komentaras</th>
-    <th>Apmokestinama suma</th>
-	<th>Tarifas</th>
-	<th>Suma</th>
+    <th class="tg-yw4l">Mokestis</th>
+    <th class="tg-yw4l">Komentaras</th>
+    <th class="tg-yw4l">Apmokestinama suma</th>
+	<th class="tg-yw4l">Tarifas</th>
+	<th class="tg-yw4l">Suma</th>
   </tr>';
   
   if ($muitas_taikomas >0)
 	  
 	  { echo '
 		 <tr>
-    <td>Muito</td>
-	 <td>Skaičiuojamas nuo prekių vertės</td>
-	 <td>'.formatted($p_verte).'</td>';
+    <td class="tg-yw4l">Muito</td>
+	 <td class="tg-yw4l">Skaičiuojamas nuo prekių vertės</td>
+	 <td class="tg-yw4l">'.formatted($p_verte).'</td>';
 	 if ($muitas_taikomas == 1)
 	 
 	 {
-	 echo '<td>'.formatted($pastovus_muito_tarifas).' %</td>';
+	 echo '<td class="tg-yw4l">'.formatted($pastovus_muito_tarifas).' %</td>';
 	 
 	 }
 	 
 	 else 
 	 
-	 { echo '<td>'.formatted($p_muito_tarifas).' %</td>';}
+	 { echo '<td class="tg-yw4l">'.formatted($p_muito_tarifas).' %</td>';}
 	 
-   echo ' <td>'.formatted($muito_mokestis).'</td>
+   echo ' <td class="tg-yw4l">'.formatted($muito_mokestis).'</td>
    
 	</tr>
 	 '
@@ -327,11 +345,11 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	  
 	  { echo '
 		 <tr>
-    <td>PVM</td>
-	<td>Skaičiuojamas nuo visų patirtų išlaidų(prekių ir siuntimo kainos; muito ir muitinės tarpiniko mokesčių)</td>
-    <td>'.formatted($PVM_apmokestinama_suma).'</td>
-	<td>'.formatted($PVM_tarifas).' %</td>
-	<td>'.formatted($PVM_mokestis).'</td>
+    <td class="tg-yw4l">PVM</td>
+	<td class="tg-yw4l">Skaičiuojamas nuo visų patirtų išlaidų(prekių ir siuntimo kainos; muito ir muitinės tarpiniko mokesčių)</td>
+    <td class="tg-yw4l">'.formatted($PVM_apmokestinama_suma).'</td>
+	<td class="tg-yw4l">'.formatted($PVM_tarifas).' %</td>
+	<td class="tg-yw4l">'.formatted($PVM_mokestis).'</td>
     
 	</tr>
 	 '
@@ -341,31 +359,31 @@ if ($tarpininkas_taikomas)
 	  
 	  { echo '
 		 <tr>
-    <td>Muitinės tarpininko</td>
-	<td>Fiksuotas mokestis</td>
-	<td>-</td>
-    <td>'.formatted($tarpininko_mokestis).'</td>
-	<td>'.formatted($tarpininko_mokestis).'</td>
-    <td></td>
-	</tr>
+    <td class="tg-yw4l">Muitinės tarpininko</td>
+	<td class="tg-yw4l">Fiksuotas mokestis</td>
+	<td class="tg-yw4l">-</td>
+    <td class="tg-yw4l">'.formatted($tarpininko_mokestis).'</td>
+	<td class="tg-yw4l">'.formatted($tarpininko_mokestis).'</td>
+    </tr>
 	 '
 		  	  ;}
    
    echo '
    
    <tr>
-    <td>Viso:</td>
-	<td></td>
-	<td></td>
-	<td></td>
-    <td>'.formatted($viso_mokesciu).'</td>    
+    <td class="tg-yw4l">Viso:</td>
+	<td class="tg-yw4l"></td>
+	<td class="tg-yw4l"></td>
+	<td class="tg-yw4l"></td>
+    <td class="tg-yw4l">'.formatted($viso_mokesciu).'</td>    
 	</tr>
    
-</table>';
+</table></div></div>';
 		 
 		 
 	 } 
  }}
  ?>
+ <div class = footer></div>
  </div>  
  </body>

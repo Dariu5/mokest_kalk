@@ -1,8 +1,8 @@
 body {
-heigh: 500px;
+height: 500px;
 background: linear-gradient(#A7D166, #7996B3);
 color: black;
-text-shadow: 1px 1px 5px #FFFFFF;
+/*text-shadow: 1px 1px 5px #FFFFFF;*/
 }
 
 .header 
@@ -11,9 +11,10 @@ text-shadow: 1px 1px 5px #FFFFFF;
 
 
 background: #FAEEF5;
-heigh: 200px;
-widht:1200px;
-
+/*
+height: 200px;
+width:1200px;
+*/
 }
 
 .button {
@@ -24,8 +25,8 @@ widht:1200px;
 	-webkit-border-radius: 5px; 
 	border: 2px solid #092A4A;
 	text-align: center;
-	##text-shadow: black 0.1em 0.1em 0.2em;
-	##color: white;
+	/*##text-shadow: black 0.1em 0.1em 0.2em;
+	##color: white;*/
 	font-size: 25px;
 	display:block;
     margin: 0 auto;
@@ -50,10 +51,11 @@ widht:1200px;
 	border: 2px solid #73AD21;
 	background: #FFFFFF;
     padding: 20px;
-    width: 250px;
-    height: 350px;
+    width: 290px;
+    height: 400px; 
 	float: left;
-	display:flex;
+	/*display:flex;*/
+	display: block;
 	
 }
 
@@ -88,15 +90,16 @@ widht:1200px;
 }
 
 */
-#input_area_l1 {
-  /*  border-radius: 25px; */
+/*#input_area_l1 {
+  /*  border-radius: 25px; 
     border: 2px solid #73AD21;
 	background: #FFECA7;
     padding: 20px;
     /*width: 250px;
-    height: 250px; */
+    height: 250px; 
 	float: left;
 }
+*/
 
 #input_area_l2 {
    /* border-radius: 2px; */
@@ -108,16 +111,47 @@ widht:1200px;
 	float: left;
 }
 
+
 #muito_ivestis {
  
 	border: 2px solid #73AD21;
 	background: #FFFFFF;
     padding: 20px;
     width: 250px;
-    height: 230px;
+	height: 400px; 
+   /* height: 230px;*/
 	float: left;
-	display:flex;
+	display:block;
 }
+
+
+#taikomi_mokesciai {
+
+	border: 2px solid #73AD21;
+	background: #FFFFFF;
+    padding: 20px;
+   /* width: 250px;
+    height: 230px; */
+	height: 400px; 
+	float: left;
+	display:block;
+}
+
+
+#paskaiciuoti_mokesciai {
+
+
+	border: 2px solid #73AD21;
+	background: #FFFFFF;
+    padding: 20px;
+ /*   width: 250px;
+    height: 230px; */
+	height: 400px; 
+	float: left;
+	display:block;
+}
+
+
 
 form span {
 	display: block;
@@ -126,4 +160,19 @@ form span {
 	color: black;
 	font-weight: 690;
 	padding-bottom: 5px;	
+}
+
+/* http://www.tablesgenerator.com/html_tables */
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+.tg .tg-yw4l{vertical-align:top}
+.tg .tg-yw4ln{vertical-align:top;background-color:#EFFFDE; }
+.tg .tg-yw4ly{vertical-align:top;background-color:#FFDEDF;}
+
+.area_header {
+
+/*background-color:#DEFFFF;*/
+
+
 }
