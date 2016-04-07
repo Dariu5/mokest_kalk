@@ -4,7 +4,7 @@
   <meta charset="utf-8">
 
   <title>Importo mokesčių kalkuliatorius</title>
-  <meta name="description" content="Importo mokesčių kalkulaitorius">
+  <meta name="description" content="Importo mokesčių skaičiuoklė">
   <meta name="author" content="radiocool.lt">
 
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -252,8 +252,8 @@ if ($muitas_taikomas == 2)
 		</div>
 			<div class= "forma">
 			<form name="muito_tarifas" action="index.php" method="post" onsubmit="return validateForm(2)">
-			<span>Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies. Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.</span>
-			<span><label>Nurodykite muito tarifą, %</label></span>
+			<span><p>Siuntai taikomas muito tarifas, kuris priklauso nuo siuntėjo šalies, bei prekių rūšies.</p><p>Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.</p></span>
+			<span><label>Nurodykite muito tarifą, %:</label></span>
 			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"></span>
 			<div class = "submit">
 			<input type="submit" class="button" value="Skaičiuoti">
@@ -375,7 +375,7 @@ if ($tarpininkas_taikomas)
 	<td class="tg-yw4l"></td>
 	<td class="tg-yw4l"></td>
 	<td class="tg-yw4l"></td>
-    <td class="tg-yw4l">'.formatted($viso_mokesciu).'</td>    
+    <td class="tg-yw4l"><b>'.formatted($viso_mokesciu).'</b></td>    
 	</tr>
    
 </table></div></div>';
@@ -384,6 +384,11 @@ if ($tarpininkas_taikomas)
 	 } 
  }}
  ?>
- <div class = footer></div>
+  
+ </div>
+ <div class = "footer">
+ <p> Ši skaičiuoklė yra rekomendacinė ir jos pateikti duomenis nebūtinai sutaps su mokėtina suma.<p/>
+ <p> <a href="http://www.radiocool.lt/gidas-apie-importomuito-mokescius-perkantiems-prekes-pastu-is-ne-es-saliu/" target="_blank">Gidas apie importo(muito) mokesčius perkantiems prekes paštu iš ne ES šalių.<a/><p/>
+ <p> <a href = "http://goo.gl/forms/8AMzQTvAX8" target="_blank">Susiekite su skaičiuoklės kūrėju</a>, jeigu pastebėjote klaidų, arba turite pasiūlymų skaičiuoklei.<p/>
  </div>  
  </body>
