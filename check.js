@@ -39,10 +39,17 @@
 	
 	if (!isNumeric(y))
 		
-		{
+		{ 
+			if (y == "") {
+			
+			ii.value = "0,00";
+			}
+			
+			else {
+			
 			
 		ii.style.backgroundColor = "red";	
-		 klaidos = klaidos +1;
+		 klaidos = klaidos +1;}
 		}
 	else {
 		

@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Importo mokesčių kalkuliatorius</title>
-  <meta name="description" content="Importo mokesčių skaičiuoklė">
+  <title>Importo mokesčių pašto siuntoms skaičiuoklė (Beta)</title>
+  <meta name="title" content="Importo mokesčių pašto siuntoms skaičiuoklė">
+  <meta name="description" content="Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų (ne ES) šalių">
   <meta name="author" content="radiocool.lt">
+  <meta name="keywords" content="muitas, muitų, skaičiuoklė, mokesčiai, kalkuliatorius,importo, PVM">
   <meta name="viewport" content="width=device-width" />
 
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -65,14 +67,54 @@ function formatted($value) {
     return $number;
 } 
 
-?>
 
+
+
+
+
+if ($sent ==0)
+
+{ 
+
+$p_verte_string = ""; 
+$s_verte_string = ""; 
+$s_verte_string = ""; 
+}
+
+else {
+
+$p_verte_string = formatted($p_verte);
+$s_verte_string = formatted($s_verte);
+
+
+}
+
+
+if ($sent ==1)
+
+{ 
+
+
+$p_muito_tarifas_string = ""; 
+}
+
+else {
+
+
+$p_muito_tarifas_string = formatted($p_muito_tarifas);
+
+
+}
+
+
+
+?>
  <script type="text/javascript" src="check.js"></script>
 <div id = "wrapper">
 <div class = "header">
 <div id = "header_footer_text">
 <h1>Importo mokesčių skaičiuoklė</h1>
-<h2>Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų šalių</h2>
+<h2>Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų (ne ES) šalių</h2>
 </div>
 </div>
 
@@ -90,11 +132,11 @@ function formatted($value) {
 			echo '
 				<div>
 					<span><label>Prekių vertė, eur:</label></span>
-					<span><input type="text" name="p_verte" id ="i" class="input" value ="'.formatted($p_verte).'"></span>
+					<span><input type="text" name="p_verte" id ="i" class="input"  value ="'.$p_verte_string.'"></span>
 				</div>
 				<div>
 					<span><label>Siuntimo kaina, eur:</span>
-					<span><input type="text" name="s_verte" id ="ii" class="input" value ="'.formatted($s_verte).'"></span>
+					<span><input type="text" name="s_verte" id ="ii" class="input"   value ="'.$s_verte_string.'"></span>
 				</div>
 				<div>	
 					<span><label>Ar siunta yra komercinio pobūdžio?:</label></span>';
@@ -260,7 +302,7 @@ if ($muitas_taikomas == 2)
 			<form name="muito_tarifas" action="index.php#moketi" method="post" onsubmit="return validateForm(2)">
 			<span><p>Tolesniems skaičiavimams reikia nurodyti taikomą muito tarifą. Jis priklauso nuo siuntėjo šalies, bei prekių rūšies.</p><p>Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.</p></span>
 			<span><label>Nurodykite muito tarifą, %:</label></span>
-			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.formatted($p_muito_tarifas).'"></span>
+			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.$p_muito_tarifas_string.'"></span>
 			<div class = "submit">
 			<input type="submit" class="button" value="Skaičiuoti">
 			<input type="hidden" name="sent" value="2">
@@ -320,7 +362,7 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
   <tr>
     <th class="tg-yw4l">Mokestis</th>
     <th class="tg-yw4l">Komentaras</th>
-    <th class="tg-yw4l">Apmokestinama suma</th>
+    <th class="tg-yw4lap">Apmokestinama suma</th>
 	<th class="tg-yw4l">Tarifas</th>
 	<th class="tg-yw4l">Suma</th>
   </tr>';
@@ -397,6 +439,7 @@ if ($tarpininkas_taikomas)
  <div id = "header_footer_text">
  <p>Ši skaičiuoklė yra rekomendacinė ir jos pateikti duomenis nebūtinai sutaps su mokėtina suma.<p/>
  <p>Skaičiavimams naudojamas Lietuvos pašto muitinės tarpininko mokestis, siunčiant per kurjerius (UPS, DHL, Fedex ir kitus) jis bus didesnis.<p/>
+ <p>Alkoholiui ir tabakui taikomos kitokie mokesčiai</p>
  <p> <a href="http://www.radiocool.lt/gidas-apie-importomuito-mokescius-perkantiems-prekes-pastu-is-ne-es-saliu/" target="_blank">Gidas apie importo(muito) mokesčius perkantiems prekes paštu iš ne ES šalių.<a/><p/>
  <p> <a href = "http://goo.gl/forms/8AMzQTvAX8" target="_blank">Susiekite su skaičiuoklės kūrėju</a>, jeigu pastebėjote klaidų, arba turite pasiūlymų skaičiuoklei.<p/>
  </div></div></div> 

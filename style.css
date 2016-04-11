@@ -1,8 +1,4 @@
-
-
-
 body {
-height: 500px;
 background: linear-gradient(#A7D166, #7996B3);
 color: black;
 /*text-shadow: 1px 1px 5px #FFFFFF;*/
@@ -13,8 +9,17 @@ color: black;
 hyphens:auto;
 word-wrap:break-word;
 
-
 }
+
+@supports not (hyphens: auto) {
+   
+    body {word-wrap:normal;}
+	
+	.tg .tg-yw4lap{word-break: break-all;}
+	
+ 
+}
+
 
 
 #wrapper {
@@ -178,11 +183,12 @@ form span {
 
 /* http://www.tablesgenerator.com/html_tables */
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;min-width: 270px; width: 100%;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;border-color:#999;color:#444;background-color:#F7FDFA;word-wrap: break-word;}
-.tg th{font-family:Arial, sans-serif;font-size:15px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;border-color:#999;color:#fff;background-color:#26ADE4;text-shadow: 2px 2px 5px #0;word-wrap: break-word;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-family:Arial, sans-serif;font-size:15px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;border-color:#999;color:#fff;background-color:#26ADE4;text-shadow: 2px 2px 5px #0;}
 .tg .tg-yw4l{vertical-align:top}
 .tg .tg-yw4ln{vertical-align:top;background-color:#EFFFDE; }
 .tg .tg-yw4ly{vertical-align:top;background-color:#FFDEDF;}
+
 
 .area_header {
 
@@ -316,8 +322,8 @@ word-wrap:normal;
 }
 
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;width: 450px;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
-.tg th{font-family:Arial, sans-serif;font-size:15px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:normal;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-shadow: 2px 2px 5px #0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;hyphens:none;}
+.tg th{font-family:Arial, sans-serif;font-size:15px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:normal;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-shadow: 2px 2px 5px #0;hyphens:none;}
 .tg .tg-yw4l{vertical-align:top}
 .tg .tg-yw4ln{vertical-align:top;background-color:#EFFFDE; }
 .tg .tg-yw4ly{vertical-align:top;background-color:#FFDEDF;}
