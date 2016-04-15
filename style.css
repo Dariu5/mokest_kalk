@@ -11,7 +11,11 @@ word-wrap:break-word;
 
 }
 
-@supports not (hyphens: auto) {
+
+
+@supports (not (hyphens: auto))  {
+
+
    
     body {word-wrap:normal;}
 	
@@ -73,6 +77,7 @@ color: white;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px; 
 	border: 2px solid #092A4A;
+	background: #F0F0F0;
 	text-align: center;
 	/*##text-shadow: black 0.1em 0.1em 0.2em;
 	##color: white;*/
@@ -327,7 +332,7 @@ word-wrap:normal;
 .tg .tg-yw4l{vertical-align:top}
 .tg .tg-yw4ln{vertical-align:top;background-color:#EFFFDE; }
 .tg .tg-yw4ly{vertical-align:top;background-color:#FFDEDF;}
-
+.tg .tg-yw4lap{word-break: normal;
 
 
 	};
