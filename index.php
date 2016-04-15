@@ -14,6 +14,17 @@
 </head>
 <body>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1762014-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <?php
 locale_set_default('lt-LT');
 session_start();
@@ -69,9 +80,6 @@ function formatted($value) {
 
 
 
-
-
-
 if ($sent ==0)
 
 { 
@@ -79,6 +87,7 @@ if ($sent ==0)
 $p_verte_string = ""; 
 $s_verte_string = ""; 
 $s_verte_string = ""; 
+$_SESSION["s_verte"]=0;
 }
 
 else {
@@ -126,7 +135,7 @@ $p_muito_tarifas_string = formatted($p_muito_tarifas);
 		</div>
 		<div class="forma">
 	
-			<form name="kalkuliatorius" action="index.php#taikomi" method="post" id="input_area" onsubmit="return validateForm(1)">
+			<form name="kalkuliatorius" action="#taikomi" method="post" id="input_area" onsubmit="return validateForm(1)">
 							
 			<?php
 			echo '
@@ -299,7 +308,7 @@ if ($muitas_taikomas == 2)
 		<h3>Įveskite muito dydį</h3>
 		</div>
 			<div class= "forma">
-			<form name="muito_tarifas" action="index.php#moketi" method="post" onsubmit="return validateForm(2)">
+			<form name="muito_tarifas" action="#moketi" method="post" onsubmit="return validateForm(2)">
 			<span><p>Tolesniems skaičiavimams reikia nurodyti taikomą muito tarifą. Jis priklauso nuo siuntėjo šalies, bei prekių rūšies.</p><p>Tarifą galima rasti  <a href = "http://litarweb.cust.lt/taric/web/main_LT" target="_blank">  Lietuvos muitinės svetainėje</a>.</p></span>
 			<span><label>Nurodykite muito tarifą, %:</label></span>
 			<span><input type="text" name="p_muito_tarifas" class="input" id ="iii" value = "'.$p_muito_tarifas_string.'"></span>
