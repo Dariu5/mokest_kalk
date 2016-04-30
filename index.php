@@ -4,8 +4,8 @@
   <meta charset="utf-8">
 
   <title>Importo mokesčių pašto siuntoms skaičiuoklė (Beta)</title>
-  <meta name="title" content="Importo mokesčių pašto siuntoms skaičiuoklė">
-  <meta name="description" content="Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų (ne ES) šalių">
+  <meta name="title" content="Importo mokesčių pašto siuntoms skaičiuoklė (Beta)">
+  <meta name="description" content="Nemokama skaičiuoklė apskaičiuoja mokesčius (PVM, muito, muitinės tarpininko) taikomus pašto siuntoms iš trečiųjų (ne ES) šalių">
   <meta name="author" content="radiocool.lt">
   <meta name="keywords" content="muitas, muitų, skaičiuoklė, mokesčiai, kalkuliatorius,importo, PVM">
   <meta name="viewport" content="width=device-width" />
@@ -122,8 +122,8 @@ $p_muito_tarifas_string = formatted($p_muito_tarifas);
 <div id = "wrapper">
 <div class = "header">
 <div id = "header_footer_text">
-<h1>Importo mokesčių skaičiuoklė</h1>
-<h2>Skaičiuoklė apskaičiuoja mokesčius taikomus pašto siuntoms iš trečiųjų (ne ES) šalių</h2>
+<h1>Importo mokesčių pašto siuntoms skaičiuoklė (Beta)</h1>
+<h2>Skaičiuoklė apskaičiuoja mokesčius (PVM, muito, muitinės tarpininko) taikomus pašto siuntoms iš trečiųjų (ne ES) šalių</h2>
 </div>
 </div>
 
