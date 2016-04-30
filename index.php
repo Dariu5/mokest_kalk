@@ -335,7 +335,7 @@ if ($muitas_taikomas == 2)
 			
 			{
 				
-				$muito_mokestis =  $p_verte * $pastovus_muito_tarifas/100;
+				$muito_mokestis =  ($p_verte +$s_verte) * $pastovus_muito_tarifas/100;
 				
 			}
 			
@@ -343,7 +343,7 @@ if ($muitas_taikomas == 2)
 			
 			{
 				
-				$muito_mokestis =  $p_verte * $p_muito_tarifas/100;
+				$muito_mokestis =  ($p_verte +$s_verte) * $p_muito_tarifas/100;
 				
 			}
 	 
@@ -381,8 +381,8 @@ $viso_mokesciu = $muito_mokestis + $PVM_mokestis + $tarpininko_mokestis;
 	  { echo '
 		 <tr>
     <td class="tg-yw4l">Muito</td>
-	 <td class="tg-yw4l">Skaičiuojamas nuo prekių vertės</td>
-	 <td class="tg-yw4l">'.formatted($p_verte).'</td>';
+	 <td class="tg-yw4l">Skaičiuojamas nuo prekių vertės ir siuntimo kainos</td>
+	 <td class="tg-yw4l">'.formatted($p_verte +$s_verte).'</td>';
 	 if ($muitas_taikomas == 1)
 	 
 	 {
