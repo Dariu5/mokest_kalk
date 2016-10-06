@@ -448,7 +448,8 @@ if ($tarpininkas_taikomas)
  <div id = "header_footer_text">
  <p>Ši skaičiuoklė yra rekomendacinė ir jos pateikti duomenis nebūtinai sutaps su mokėtina suma.<p/>
  <p>Skaičiavimams naudojamas Lietuvos pašto muitinės tarpininko mokestis, siunčiant per kurjerius (UPS, DHL, Fedex ir kitus) jis bus didesnis.<p/>
- <p>Alkoholiui ir tabakui taikomos kitokie mokesčiai</p>
+ <p>Alkoholiui ir tabakui taikomos kitokie mokesčiai.</p>
+ <p>Kai kurioms prekės kaip dviračiai gali būti papildomai taikomi antidepingo muitai.</p>
  <p> <a href="http://www.radiocool.lt/gidas-apie-importomuito-mokescius-perkantiems-prekes-pastu-is-ne-es-saliu/" target="_blank">Gidas apie importo(muito) mokesčius perkantiems prekes paštu iš ne ES šalių.<a/><p/>
  <p> <a href = "http://goo.gl/forms/8AMzQTvAX8" target="_blank">Susiekite su skaičiuoklės kūrėju</a>, jeigu pastebėjote klaidų, arba turite pasiūlymų skaičiuoklei.<p/>
  </div></div></div> 
